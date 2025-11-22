@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Compliment Machine 💖</title>
 
+    <!-- Cute Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at top, #ffe6f2, #ffb3d9);
+            font-family: "Baloo 2", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 25px 35px;
+            width: min(520px, 90vw);
+            border-radius: 24px;
+            box-shadow: 0 18px 40px rgba(255, 0, 128, 0.25);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 26px;
+            opacity: 0.25;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .heart:nth-child(1) { top: 10%; left: 8%; animation-duration: 9s; }
+        .heart:nth-child(2) { top: 18%; right: 10%; animation-duration: 7s; }
+        .heart:nth-child(3) { bottom: 10%; left: 15%; animation-duration: 8s; }
+        .heart:nth-child(4) { bottom: 18%; right: 14%; animation-duration: 10s; }
+
+        @keyframes float {
+            0%   { transform: translateY(0); opacity: 0.18; }
+            50%  { transform: translateY(-12px); opacity: 0.5; }
+            100% { transform: translateY(0); opacity: 0.18; }
+        }
+
+        h1 {
+            margin: 0 0 6px;
+            font-size: 2.2rem;
+            color: #b3005f;
+        }
+
+        .subtitle {
+            margin: 0 0 20px;
+            font-size: 0.95rem;
+            color: #cc3b82;
+            opacity: 0.9;
+        }
+
+        #compliment-box {
+            margin: 18px auto 26px;
+            padding: 20px 18px;
+            background: #ffe6f5;
+            border-radius: 18px;
+            border: 2px dashed #ff66b3;
+            color: #99004d;
+            font-size: 1.2rem;
+            line-height: 1.4;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 1.05rem;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, #ff4da6, #ff1a8c);
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            box-shadow: 0 10px 20px rgba(255, 0, 128, 0.4);
+            transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 26px rgba(255, 0, 128, 0.5);
+            filter: brightness(1.05);
+        }
+
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 8px 16px rgba(255, 0, 128, 0.4);
+            filter: brightness(0.98);
+        }
+
+        .footer {
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: #b34d7f;
+            opacity: 0.85;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Floating hearts -->
+        <div class="heart">💖</div>
+        <div class="heart">💘</div>
+        <div class="heart">💕</div>
+        <div class="heart">💓</div>
+
+        <h1>Compliment Machine</h1>
+        <p class="subtitle">Click the button and let the ego boost begin ✨</p>
+
+        <div id="compliment-box">
+            Press the button to receive your first compliment 💌
+        </div>
+
+        <button onclick="generateCompliment()">Give me a compliment 💘</button>
+
+        <p class="footer">
+            P.S. You already look fantastic just for being here.
+        </p>
+    </div>
+
+    <script>
+        const compliments = [
+            "You’re the Python of my dreams — indentation has never looked so good!",
+            "If genius were a variable, you'd be a constant — always defined, never forgotten.",
+            "Your elegance makes Python’s syntax look messy.",
+            "You debug life better than PyCharm with AI assist.",
+            "You shine brighter than a freshly installed LTS version of Ubuntu.",
+            "Your mind is faster than an optimized NumPy vectorization.",
+            "If confidence were a library, you'd be imported everywhere.",
+            "You’re so smooth, even semicolons don’t dare bother you.",
+            "If life were Git, you'd be the main branch everyone wants to merge into.",
+            "You have more charm than a perfectly passing unit test on the first run.",
+            "If charisma were RAM, you'd crash the system from sheer abundance."
+        ];
+
+        function generateCompliment() {
+            const randomIndex = Math.floor(Math.random() * compliments.length);
+            const box = document.getElementById("compliment-box");
+            box.style.opacity = 0;
+
+            setTimeout(() => {
+                box.textContent = compliments[randomIndex];
+                box.style.opacity = 1;
+            }, 150);
+        }
+    </script>
+</body>
+</html>
